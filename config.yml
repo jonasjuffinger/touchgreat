@@ -1,0 +1,34 @@
+swipe:
+  '3':
+    left:
+      command: 'xdotool key Alt_L+Right'
+
+    right:
+      command: 'xdotool key Alt_L+Left'
+
+    down:
+      command: 'xdotool key Control_L+Alt_L+Shift_L+Down'
+
+    up:
+      command: 'xdotool key Control_L+Alt_L+Down'
+
+  '4':
+    all:
+      begin:
+        command: 'xdotool keydown Control_L+Alt_L mousedown 1'
+
+      update:
+        command: 'xdotool mousemove_relative -- ${1.5*x} ${1.5*y}'
+
+      end:
+        command: 'xdotool keyup Control_L+Alt_L mouseup 1'
+
+pinch:
+  '2':
+      command: ''
+
+  '3':
+      command: ''
+
+  '4':
+      command: ''

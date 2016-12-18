@@ -3,6 +3,7 @@
 import re
 import subprocess
 import yaml
+import math
 
 DEBUG = False
 
@@ -82,9 +83,11 @@ def executeCommandCall(command):
   # evaluate all expressions in ${}
   # big thanks to http://stackoverflow.com/a/36222262/2531813
   for n,i in enumerate(commandList):
-    commandList[n] = re.sub(r'[^\\|\s]?\${(\S*)}', 
-                            lambda c: str(eval(c.group(1).lower(), {}, env)), 
+    commandList[n] = re.sub(r'(?:^|[^\\]{1})\${(.{0,}?)}', 
+                            lambda c: str(eval(c.group(1).lower(), None, env)), 
                             commandList[n])
+    # And remove \ from \${
+    commandList[n] = re.sub(r'\\\$\{', '${', commandList[n])
 
   if DEBUG:
     print(commandList)

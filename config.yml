@@ -1,28 +1,37 @@
 swipe:
   '3':
     left:
+      # go back in most browsers
       command: 'xdotool key Alt_L+Right'
 
     right:
+      # go forward in most browsers
       command: 'xdotool key Alt_L+Left'
 
     down:
+      # trigger expo view in compiz
       command: 'xdotool key Control_L+Alt_L+Shift_L+Down'
 
     up:
+      # show all windows on current workspace in compiz
       command: 'xdotool key Control_L+Alt_L+Down'
 
   '4':
     all:
       begin:
+        # start cube rotation
         command: 'xdotool keydown Control_L+Alt_L mousedown 1'
 
       update:
+        # rotate cube relative to the mouse movement
         command: 'xdotool mousemove_relative -- ${1.5*x} ${1.5*y}'
 
       end:
+        # end cube rotation
         command: 'xdotool keyup Control_L+Alt_L mouseup 1'
 
+
+# no pinch actions
 pinch:
   '2':
       command: ''

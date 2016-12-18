@@ -5,6 +5,8 @@ Touchgreat makes your touchpad great.
 
 There are many programs out there that let you bind key shortcuts to gestures on your touchpad. But they all use a very simple approach of just executing an key combo when a gesture ends. Touchgreat can do way more. It is possible to execute commands on a gesture start, an update of the gesture and at the end. On the update it is possible to use the finger movement as argument for the command.
 
+Thats for example possible: [click](https://www.jonasjuffinger.com/2016/12/08/natural-swipe-workspace-switcher/#Result)
+
 ## Installation
 ### libinput
 Touchgreat uses libinput to recognize gestures. Libinput can be installed from the software repository of your distro, but I highly recommend to compile it from source, because the gesture recognition drastically improved in the last versions. For example in the Ubuntu 16.04 repository is libinput 1.2.3 which was released in February 2016 the current version is 1.5.3.

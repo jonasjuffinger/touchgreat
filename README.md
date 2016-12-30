@@ -30,7 +30,7 @@ in Ubuntu.
 1. Run it
 
 ### Configuration
-The configuration is in the config.yml file that must be in the same directory as the touchgreat.py file. I will add user config files with the next update.
+The configuration is in the config.yml file. Touchgreat tries to load the file from ~/config/touchgreat and falls back to the directory where the python script is.
 
 The config.yml file in this repository also contains a full configuration for advanced cube rotation with compiz. See [this](https://www.jonasjuffinger.com/touchgreat) for more information.
 

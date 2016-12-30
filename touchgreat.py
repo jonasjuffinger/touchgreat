@@ -4,6 +4,7 @@ import re
 import subprocess
 import yaml
 import math
+import os
 
 DEBUG = False
 
@@ -117,20 +118,38 @@ def getDeviceName():
   # the device where Tap-to-click != 'n/a' is the touchpad
   return sorted(device[0] for device in matches if device[1] != 'n/a')[0]
 
-INPUT_DEVICE = getDeviceName()
+
+def getConfigFilePath():
+  if os.path.isfile(os.path.expanduser('~/.config/touchgreat/config.yml')):
+    return os.path.expanduser('~/.config/touchgreat/config.yml')
+
+  elif os.path.isfile(os.path.dirname(os.path.abspath(__file__))+'/config.yml'):
+    return os.path.dirname(os.path.abspath(__file__))+'/config.yml'
+
+  else:
+    print('NO CONFIG FILE FOUND')
+    print('checked:')
+    print('  ~/.config/touchgreat/config.yml')
+    print('  '+os.path.dirname(os.path.abspath(__file__))+'/config.yml')
+    exit(1)
+
+
 
 
 
 # PROGRAM START
+INPUT_DEVICE = getDeviceName()
+
+configFilePath = getConfigFilePath()
 
 # Load the config.yml file and parse it.
 conf = None
-with open('config.yml', 'r') as stream:
+with open(configFilePath, 'r') as stream:
   try:
     conf = yaml.load(stream)
   except yaml.YAMLError as e:
     print('Exception while loading config file: {}'.format(e))
-    exit(1)
+    exit(2)
 
 
 # run libinput-debug-events

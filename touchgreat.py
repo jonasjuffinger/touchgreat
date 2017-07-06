@@ -14,6 +14,9 @@ movementVectorSum = [0,0]
 
 # This function gets the finger count from the libinput-debug-events output line
 def getFingerCount(line):
+  if line.count('\t') == 1:
+    return re.findall(r'\t(\w+)', line)[0]
+
   return re.findall(r'\t.*\t(\w+)', line)[0]
 
 # This function gets the direction of the swipe
